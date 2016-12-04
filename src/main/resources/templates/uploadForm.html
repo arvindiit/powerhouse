@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<th:block th:if="${dataPresent} != true">
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <table>
+            <tr><td>File fraction upload:</td><td><input type="file" name="fractionFile" /></td></tr>
+            <tr><td>File meter-reading upload:</td><td><input type="file" name="meterReadingFile" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+</th:block>
+
+<th:block th:if="${dataPresent} == true">
+
+    <div>
+        <form method="GET" action="/refresh">
+            <table>
+                <tr><td></td><td><input type="submit" value="Refresh" /></td></tr>
+            </table>
+        </form>
+    </div>
+</th:block>
+
+</body>
+</html>
